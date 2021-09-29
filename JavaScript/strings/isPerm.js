@@ -22,7 +22,7 @@ function isPermSorted(str1, str2) {
   //Input two strings, check if second string is a permutation of the first
   //Permutation meaning that it contains the same letters of the first string to create a new word/sequence of chars
   if (str1.length != str2.length) return false;
-  let str1_sorted = str1.split("").sort().join("");
+  let str1_sorted = str1.split("").sort().join(""); //Convert back to string to keep 'string' type but really should just keep it an array and work it with as such.
   let str2_sorted = str2.split("").sort().join("");
 
   for (let i = 0; i < str1_sorted.length; i++) {
