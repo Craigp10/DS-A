@@ -23,13 +23,6 @@ linkedList_values.forEach((node, idx) => {
   previousNode = newNode;
 });
 let list = new LinkedList(previousNode);
-// console.log(list.head.next);
-
-let nextNode = list.head;
-// while (nextNode) {
-//   console.log(nextNode);
-//   nextNode = nextNode.next;
-// }
 
 function removeDupsHash(head) {
   //Remove duplicates from an unsorted linkedList.
@@ -58,7 +51,7 @@ function removeDupsHash(head) {
   }
   console.log(nodeObj);
 }
-function removeDupsPointers(head) {
+function removeDupsRunner(head) {
   //Remove duplicates from an unsorted linkedList. W/ Runner approach (also known as tortoise and haire)
   //The list is unsorted so we can implement two pointers to iterate through the list and check for duplicates
   //to the next link, which will remove the current standing node. Assume Singly linkedList
@@ -78,9 +71,9 @@ function removeDupsPointers(head) {
   }
 }
 console.log("**** REMOVING DUPS ****");
-console.log([1, 4, 3, 5, 7, 8, 6, 2]);
+console.log("List order after dups removed", [2, 6, 8, 7, 5, 3, 4, 1]);
 // removeDupsHash(list.head);
-removeDupsPointers(list.head);
+removeDupsRunner(list.head);
 
 nextNode = list.head;
 while (nextNode) {
