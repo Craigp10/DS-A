@@ -54,13 +54,17 @@ class SetOfStacks {
   isEmpty() {
     return this.stacks.length == 0 ? true : false;
   }
+
+  popAt(index) {
+    return this.stacks[index].pop();
+  }
 }
 
 let stack = new SetOfStacks(4);
 stack.push(6);
 stack.push(4);
 stack.push(5);
-stack.push(1);
+stack.push(532);
 stack.push(1);
 stack.push(12);
 stack.push(0);
@@ -68,6 +72,7 @@ console.log(stack.stacks);
 
 console.log(stack.pop());
 console.log(stack.pop());
+console.log("PopAt", stack.popAt(0));
 console.log(stack.stacks);
 console.log(stack.pop());
 console.log(stack.pop());
