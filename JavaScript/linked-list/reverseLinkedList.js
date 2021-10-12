@@ -1,3 +1,5 @@
+//Defining a LinkedList and Node
+
 class Node {
   constructor(data) {
     this.data = data;
@@ -25,30 +27,41 @@ class LinkedList {
   }
 }
 
-let linkedList_values = [1, 2, 3, 8, 6, 2];
-console.log(linkedList_values);
-let previousNode;
-linkedList_values.forEach((node, idx) => {
-  let newNode = new Node(node);
-  if (idx) {
-    newNode.next = previousNode;
-  }
+function createLinkedList(values) {
+  let previousNode;
+  values.forEach((node, idx) => {
+    let newNode = new Node(node);
+    if (idx) {
+      newNode.next = previousNode;
+    }
 
-  previousNode = newNode;
-});
-let list = new LinkedList(previousNode);
-// console.log(list.size());
-nextNode = list.head;
-while (nextNode) {
-  console.log(nextNode);
-  nextNode = nextNode.next;
+    previousNode = newNode;
+  });
+  let linkedList = new LinkedList(previousNode);
+
+  return linkedList;
 }
-function reverseLinkedList(head) {
-  //Given the head of a linkedList, reverse it. The tail is now the head and the head is now the tail
-  //O(n)
 
+function printLinkedList(head) {
+  let nextNode = head;
+  while (nextNode) {
+    console.log(nextNode);
+    nextNode = nextNode.next;
+  }
+}
+
+let linkedListValues = [1, 2, 3, 8, 6, 2];
+let list = createLinkedList(linkedListValues);
+printLinkedList(list.head);
+
+function reverseLinkedList(head) {
+  //Given the head of a singly linkedList, reverse it and return it. The tail is now the head and the head is now the tail
   //Loop over list, Keep track of previous node and set the current node next to the previous node.
   //Returns new head
+
+  //Time Complexity - O(n)
+  //Space Complexity - O(n)
+
   let node;
   let currentNode = head;
   let previousNode;
@@ -68,10 +81,5 @@ function reverseLinkedList(head) {
 }
 
 let head = reverseLinkedList(list.head);
-console.log("RAN FUNCTION");
 
-nextNode = head;
-while (nextNode) {
-  console.log(nextNode);
-  nextNode = nextNode.next;
-}
+printLinkedList(head);

@@ -25,25 +25,37 @@ class LinkedList {
   }
 }
 
-let linkedList_values = [1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]; //length = 11; dups = 3;
-console.log(linkedList_values);
-let previousNode;
-linkedList_values.forEach((node, idx) => {
-  let newNode = new Node(node);
-  if (idx) {
-    newNode.next = previousNode;
-  }
+function createLinkedList(values) {
+  let previousNode;
+  values.forEach((node, idx) => {
+    let newNode = new Node(node);
+    if (idx) {
+      newNode.next = previousNode;
+    }
 
-  previousNode = newNode;
-});
-let list = new LinkedList(previousNode);
+    previousNode = newNode;
+  });
+  let linkedList = new LinkedList(previousNode);
+
+  return linkedList;
+}
+
+function printLinkedList(head) {
+  let nextNode = head;
+  while (nextNode) {
+    console.log(nextNode);
+    nextNode = nextNode.next;
+  }
+}
+let linkedListValues = [1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]; //length = 11; dups = 3;
+let list = createLinkedList(linkedListValues);
+printLinkedList(list.head);
 console.log(list.size());
 
 function kToLastLinear(list, k) {
   //return the kth to last data
   //assume we don't know the size
 
-  //figure out size O(n);
   let size = list.size();
 
   let head = list.getFirst();
@@ -68,7 +80,9 @@ function kToLastPointers(head, k) {
   //assume we don't know the size
   //two pointers one starts on head and other starts on kth element. k - 1 index.
 
-  //Dont know size O(n);
+  //Time Complexity O(2n) -> O(n)
+  //Space Complexity O(1) -- Not considering initial linkedlist
+
   let ptr1 = head;
   let ptr2 = head;
   for (let j = 0; j < k; j++) {
@@ -84,5 +98,6 @@ function kToLastPointers(head, k) {
   return ptr1;
 }
 let head = list.head;
+
 console.log(kToLastLinear(list, 3), 3);
 console.log(kToLastPointers(head, 3), 3);
