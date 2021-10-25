@@ -1,3 +1,4 @@
+// Node:
 class Node {
   constructor(value) {
     this.value = value;
@@ -6,6 +7,7 @@ class Node {
   }
 }
 
+// BinarySearchTree:
 class BinarySearchTree {
   constructor() {
     this.root = null;
@@ -88,10 +90,11 @@ class BinarySearchTree {
       current.value = min;
       // current.right = this.removeRec(current.right, current.value);
     }
-    console.log("End of rec current", current);
     return current;
   }
 }
+
+// const { BinarySearchTree, Node } = require("./BStree_implementation");
 
 let tree = new BinarySearchTree();
 tree.root = new Node(11);
@@ -119,14 +122,18 @@ tree.insert(35);
 //                        14  18   35 324
 //
 //
-console.log(tree.root);
-console.log(tree.root.left);
-console.log(tree.root.right.left);
-console.log(tree.root.right.right);
+// console.log(tree.root);
+// console.log(tree.root.left);
+// console.log(tree.root.right.left);
+// console.log(tree.root.right.right);
 
 // console.log("find 4", tree.find(4));
 // console.log("find 1", tree.find(1));
 
-tree.remove(15); //Should replace 15 with 18
-tree.remove(34); //Should replace 34 with 35
-console.log(tree.root.right.right);
+// tree.remove(15); //Should replace 15 with 18
+// tree.remove(34); //Should replace 34 with 35
+// console.log(tree.root.right.right);
+
+module.exports = {
+  tree: tree,
+};
