@@ -1,29 +1,9 @@
-class Stack {
-  //First attempt at holding a min value in the stack... Not completely dynamic
-  constructor() {
-    this.items = [];
-  }
-
-  pop() {
-    return this.items.pop();
-  }
-  push(item) {
-    this.items.push(item);
-  }
-
-  peek() {
-    return this.items[this.items.length - 1];
-  }
-
-  isEmpty() {
-    return this.items.length == 0 ? true : false;
-  }
-}
+const Stack = require("./stackImplementation");
 
 class MinStack {
   //Dynamic Stack that displays min
   constructor() {
-    this.items = []; //All items
+    this.items = new Stack(); //All items
     this.s2 = new Stack(); //minStack
   }
 

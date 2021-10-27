@@ -1,29 +1,7 @@
-class Stack {
-  constructor() {
-    this.items = [];
-  }
-
-  pop() {
-    return this.items.pop();
-  }
-  push(item) {
-    this.items.push(item);
-  }
-
-  peek() {
-    return this.items[this.items.length - 1];
-  }
-
-  isEmpty() {
-    return this.items.length == 0 ? true : false;
-  }
-
-  getLength() {
-    return this.items.length;
-  }
-}
+const Stack = require("./stackImplementation");
 
 class MyQueue {
+  //Implementing a queue with two stacks
   constructor() {
     this.newStack = new Stack(); //Where new items are inserted onto on top
     this.existingStack = new Stack(); //Where we reorder our stack to represent a queue and pop on top
