@@ -1,29 +1,8 @@
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
-class LinkedList {
-  constructor(head = null) {
-    this.head = head;
-  }
-
-  size() {
-    let count = 0;
-    let node = this.head;
-    while (node) {
-      count++;
-      node = node.next;
-    }
-    return count;
-  }
-
-  getFirst() {
-    return this.head;
-  }
-}
+const {
+  Node,
+  SinglyLinkedList,
+  DoublyLinkedList,
+} = require("./linkedListImplementation");
 
 function createLinkedList(values) {
   let previousNode;
@@ -35,22 +14,12 @@ function createLinkedList(values) {
 
     previousNode = newNode;
   });
-  let linkedList = new LinkedList(previousNode);
+  let linkedList = new SinglyLinkedList(previousNode);
 
   return linkedList;
 }
-
-function printLinkedList(head) {
-  let nextNode = head;
-  while (nextNode) {
-    console.log(nextNode);
-    nextNode = nextNode.next;
-  }
-}
 let linkedListValues = [1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]; //length = 11; dups = 3;
 let list = createLinkedList(linkedListValues);
-printLinkedList(list.head);
-console.log(list.size());
 
 function kToLastLinear(list, k) {
   //return the kth to last data
@@ -99,5 +68,5 @@ function kToLastPointers(head, k) {
 }
 let head = list.head;
 
-console.log(kToLastLinear(list, 3), 3);
-console.log(kToLastPointers(head, 3), 3);
+console.log(kToLastLinear(list, 3).data === 3);
+console.log(kToLastPointers(head, 3).data === 3);

@@ -1,47 +1,33 @@
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
+const {
+  Node,
+  SinglyLinkedList,
+  DoublyLinkedList,
+} = require("./linkedListImplementation");
 
-class LinkedList {
-  constructor(head = null) {
-    this.head = head;
-  }
-
-  size() {
-    let count = 0;
-    let node = this.head;
-    while (node) {
-      count++;
-      node = node.next;
+function createLinkedList(values) {
+  let previousNode;
+  values.forEach((node, idx) => {
+    let newNode = new Node(node);
+    if (idx) {
+      newNode.next = previousNode;
     }
-    return count;
-  }
 
-  getFirst() {
-    return this.head;
-  }
+    previousNode = newNode;
+  });
+  let linkedList = new SinglyLinkedList(previousNode);
+
+  return linkedList;
 }
 
-let linkedList_values = [1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]; //length = 11; dups = 3;
-console.log(linkedList_values);
-let previousNode;
-linkedList_values.forEach((node, idx) => {
-  let newNode = new Node(node);
-  if (idx) {
-    newNode.next = previousNode;
-  }
-
-  previousNode = newNode;
-});
-let list = new LinkedList(previousNode);
+let linkedListValues = [1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]; //length = 11; dups = 3;
+let list = createLinkedList(linkedListValues);
 console.log(list.size());
 
 function deleteMiddle(node) {
   //Given a middle node of a linkedList, remove it from the linked list.
-  //O(1)
+  //Space Complexity -- O(1)
+  //Time Complexity -- O(1)
+
   if (node == null || node.next == null) return false;
   //We can  copy over the contents of the 'next' node entirely to the current node, then change the next pointer to remove the next node.
   node.data = node.next.data;
@@ -50,5 +36,10 @@ function deleteMiddle(node) {
   return true;
 }
 
-// console.log(deleteMiddle(list[3]));
-// console.log(list.size());
+console.log(
+  deleteMiddle({
+    data: 5,
+    next: { data: 4, next: { data: 3, next: {} } },
+  })
+);
+console.log(list.size());

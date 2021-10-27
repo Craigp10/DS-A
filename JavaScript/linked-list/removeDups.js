@@ -1,29 +1,8 @@
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
-class LinkedList {
-  constructor(head = null) {
-    this.head = head;
-  }
-
-  size() {
-    let count = 0;
-    let node = this.head;
-    while (node) {
-      count++;
-      node = node.next;
-    }
-    return count;
-  }
-
-  getFirst() {
-    return this.head;
-  }
-}
+const {
+  Node,
+  SinglyLinkedList,
+  DoublyLinkedList,
+} = require("./linkedListImplementation");
 
 function createLinkedList(values) {
   let previousNode;
@@ -35,21 +14,14 @@ function createLinkedList(values) {
 
     previousNode = newNode;
   });
-  let linkedList = new LinkedList(previousNode);
+  let linkedList = new SinglyLinkedList(previousNode);
 
   return linkedList;
 }
 
-function printLinkedList(head) {
-  let nextNode = head;
-  while (nextNode) {
-    console.log(nextNode);
-    nextNode = nextNode.next;
-  }
-}
 let linkedListValues = [1, 2, 3, 8, 6, 2];
 let list = createLinkedList(linkedListValues);
-printLinkedList(list.head);
+list.print();
 
 function removeDupsHash(head) {
   //Remove duplicates from an unsorted linkedList.
@@ -102,5 +74,4 @@ console.log("**** REMOVING DUPS ****");
 console.log("List order after dups removed", [2, 6, 8, 7, 5, 3, 4, 1]);
 // removeDupsHash(list.head);
 removeDupsRunner(list.head);
-
-printLinkedList(list.head);
+list.print();

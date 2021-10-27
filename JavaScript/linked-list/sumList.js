@@ -1,35 +1,12 @@
-//Defining a LinkedList and Node
-
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
-class LinkedList {
-  constructor(head = null) {
-    this.head = head;
-  }
-
-  size() {
-    let count = 0;
-    let node = this.head;
-    while (node) {
-      count++;
-      node = node.next;
-    }
-    return count;
-  }
-
-  getFirst() {
-    return this.head;
-  }
-}
+const {
+  Node,
+  SinglyLinkedList,
+  DoublyLinkedList,
+} = require("./linkedListImplementation");
 
 function createLinkedList(values) {
   let previousNode;
-  values.split("c").forEach((node, idx) => {
+  values.split("").forEach((node, idx) => {
     let newNode = new Node(node);
     if (idx) {
       newNode.next = previousNode;
@@ -37,25 +14,17 @@ function createLinkedList(values) {
 
     previousNode = newNode;
   });
-  let linkedList = new LinkedList(previousNode);
+  let linkedList = new SinglyLinkedList(previousNode);
 
   return linkedList;
-}
-
-function printLinkedList(head) {
-  let nextNode = head;
-  while (nextNode) {
-    console.log(nextNode);
-    nextNode = nextNode.next;
-  }
 }
 
 let firstDigit = "716";
 let list1 = createLinkedList(firstDigit);
 let secondDigit = "592";
 let list2 = createLinkedList(secondDigit);
-printLinkedList(list1.head);
-printLinkedList(list2.head);
+list1.print();
+list2.print();
 
 function sumList(list1, list2) {
   //Given two linkedList that are in reverse order, add its digits together as a string and sum the two strings
