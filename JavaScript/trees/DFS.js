@@ -12,33 +12,55 @@ const { tree } = require("./BStree_implementation");
 
 function DFS_preOrder(root) {
   let visited = [];
-  visited = traverse(root);
+  function traverse(node) {
+    visited.push(node.value);
+    if (node.left) traverse(node.left);
+    if (node.right) traverse(node.right);
+  }
+  traverse(root);
   return visited;
 }
 
-function traverse(current) {
-  //place root in queue
-  queue.push(current);
+console.log("PRE ORDER", DFS_preOrder(tree.root));
 
-  if (current.left) {
-    preOrder(current.left);
+function DFS_inOrder(root) {
+  //      10
+  //    6       15
+  //  3   8       20
+  //[3,6,8,10,15,20]
+
+  let visited = [];
+  function traverse(node) {
+    if (node.left) traverse(node.left);
+    visited.push(node.value);
+    if (node.right) traverse(node.right);
   }
-  if (current.right) {
-    preOrder(current.right);
-  }
-
-  // while (queue.notEmpty()) {
-  while (queue.length) {
-    let current = queue.shift(); //Removes first element from queue and assigns it to variable
-
-    //place child nodes in queue if they exist
-    if (current.left) queue.push(current.left);
-    if (current.right) queue.push(current.right);
-
-    visited.push(current.value);
-  }
-
+  traverse(root);
   return visited;
 }
 
-console.log(DFS_preOrder());
+console.log("IN ORDER", DFS_inOrder(tree.root));
+//[1,7,9,10,11,12,13,14,15,18,30,34,35,120,324]
+//          11
+//      7                15
+//    1   9          12         34
+//         10          13      30  120
+//                        14  18   35 324
+//
+
+function DFS_postOrder(root) {
+  //      10
+  //    6       15
+  //  3   8       20
+  //[3,8,6,20,15,10]
+  let visited = [];
+  function traverse(node) {
+    if (node.left) traverse(node.left);
+    if (node.right) traverse(node.right);
+    visited.push(node.value);
+  }
+  traverse(root);
+  return visited;
+}
+console.log("POST ORDER", DFS_postOrder(tree.root));
+//[1, 10, 9, 7, 14, 13, 12, 18, 30, 35, 324, 120, 34, 15, 11]
