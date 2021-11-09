@@ -3,7 +3,24 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function (nums, target) {
+
+let twoSum_brute = function (nums, target) {
+  if (nums.length == 2) {
+    return [0, 1];
+  }
+
+  // brute force is loop nums, subtract i from target then check if remaining value exist in nums -- O(n2) i think -- Could get it to O(n) if we use a hash table
+  for (let i = 0; i < nums.length; i++) {
+    let remaining = target - nums[i];
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[j] == remaining) {
+        return [i, j];
+      }
+    }
+  }
+};
+
+let twoSum = function (nums, target) {
   //Input array of integers and a target integer
   //Return the indexs of the two integers that sum the target
   //Assume there will always be two numbs that sum and only two to the target
@@ -17,16 +34,6 @@ var twoSum = function (nums, target) {
   if (nums.length == 2) {
     return [0, 1];
   }
-
-  //brute force is loop nums, subtract i from target then check if remaining value exist in nums -- O(n2) i think -- Could get it to O(n) if we use a hash table
-  // for (let i = 0; i < nums.length; i++ ){
-  //     let remaining = target - nums[i];
-  //     for (let j = i + 1; j < nums.length; j++) {
-  //         if (nums[j] == remaining) {
-  //             return [i,j];
-  //         }
-  //     }
-  // }
 
   //How can I speed it up? We're not counting but we do want to keep each iteration. Could loop nums store each value, then loop again checking if its remain value is stored. Hold index as the value... Run into a problem tho if theres a duplicate value... Check if it exist if so, check if that is our answer, if not skip it
   let existing_nums = {};
@@ -47,4 +54,5 @@ var twoSum = function (nums, target) {
   }
 };
 
+console.log(twoSum_brute([3, 2, 3, 4], 7), [0, 3]);
 console.log(twoSum([3, 2, 3], 6), [0, 2]);
