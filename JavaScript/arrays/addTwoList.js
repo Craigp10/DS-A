@@ -45,3 +45,10 @@ const l1 = createLinkedList([3, 4, 2]);
 const l2 = createLinkedList([4, 6, 5]);
 
 console.log(addTwoNumbers(l1, l2), 807);
+const l3 = createLinkedList([
+  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 1,
+]);
+const l4 = createLinkedList([5, 6, 4]);
+
+console.log(addTwoNumbers(l3, l4), "Error cause of number formatting");
