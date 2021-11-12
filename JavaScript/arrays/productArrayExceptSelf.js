@@ -1,3 +1,4 @@
+//Medium
 //Given an array of ints, return an array containing the product of the array excluding the same index element.
 
 function productArrayExceptSelf_brute(arr) {
