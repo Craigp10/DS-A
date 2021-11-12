@@ -16,3 +16,6 @@ function productArray(arr) {
 
 console.log(productArray([1, 2, 3, 4]) == 24);
 console.log(productArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == 3628800);
+console.log(productArray([1, 2, 3, 4]), 24);
+console.log(productArray([-1, 1, 0, -3, 3]), 0);
+console.log(productArray([-1, 1, 2, -3, 3]), 18);
