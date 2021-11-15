@@ -114,6 +114,24 @@ tree.insert(30);
 tree.insert(18);
 tree.insert(35);
 
+let dupTree = new BinarySearchTree();
+dupTree.root = new Node(11);
+dupTree.root.right = new Node(15); // >11
+dupTree.root.left = new Node(7); // <11
+dupTree.root.left.right = new Node(9); // <11 and <7
+dupTree.insert(10);
+
+dupTree.insert(12);
+dupTree.insert(34);
+dupTree.insert(1);
+dupTree.insert(120);
+dupTree.insert(324);
+dupTree.insert(13);
+dupTree.insert(14);
+dupTree.insert(30);
+dupTree.insert(18);
+dupTree.insert(35);
+dupTree.insert(10343);
 //My Tree
 //          11
 //      7                15
@@ -135,5 +153,6 @@ tree.insert(35);
 // console.log(tree.root.right.right);
 
 module.exports = {
-  tree: tree,
+  tree,
+  dupTree,
 };
