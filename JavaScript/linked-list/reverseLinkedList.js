@@ -22,6 +22,7 @@ function createLinkedList(values) {
 let linkedListValues = [1, 2, 3, 8, 6, 2];
 let list = createLinkedList(linkedListValues);
 list.print();
+console.log("***************");
 
 function reverseLinkedList(head) {
   //Given the head of a singly linkedList, reverse it and return it. The tail is now the head and the head is now the tail
@@ -31,24 +32,17 @@ function reverseLinkedList(head) {
   //Time Complexity - O(n)
   //Space Complexity - O(n)
 
-  let node;
-  let currentNode = head;
-  let previousNode;
-  while (currentNode) {
-    nextNode = currentNode.next;
-
-    if (!previousNode) {
-      currentNode.next = null;
-    } else {
-      currentNode.next = previousNode;
-    }
-    previousNode = currentNode;
-    currentNode = nextNode;
+  let node = head;
+  let prev = null;
+  while (node) {
+    nxt = node.next;
+    node.next = prev;
+    prev = node;
+    node = nxt;
   }
-  node = previousNode;
-  return node;
+  return prev;
 }
 
 let head = reverseLinkedList(list.head);
-
+list.head = head;
 list.print();
