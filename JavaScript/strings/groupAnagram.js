@@ -9,15 +9,21 @@
 function groupAnagram(strs) {
   // O(n*mlog(m)) complexity -- where n is the number of elements in strs and m is the max length of strs[i].
   //Loop strs (n) and sort strs[i] (m)
-  let anagramObj = {};
+  //faster than 98%
+  const strMap = new Map();
 
-  for (let i = 0; i < strs.length; i++) {
-    //O(n)
-    let current = strs[i].split("").sort().join(""); //O(m log(m))
-    if (anagramObj[current]) anagramObj[current].push(strs[i]);
-    else anagramObj[current] = [strs[i]];
+  for (let str of strs) {
+    const key = str.split("").sort().join("");
+    const value = strMap.get(key);
+
+    if (!strMap.get(key)) {
+      strMap.set(key, [str]);
+    } else {
+      strMap.get(key).push(str);
+    }
   }
-  return Object.values(anagramObj);
+
+  return [...strMap.values()];
 }
 
 console.log(groupAnagram(["eat", "tea", "tan", "ate", "nat", "bat"]), [
