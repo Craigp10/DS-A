@@ -1,4 +1,8 @@
+//Implements Stack
+
 function validParentheses(str) {
+  //O(n) time Complexity
+
   let stack = [];
   let validObj = {
     "(": ")",
