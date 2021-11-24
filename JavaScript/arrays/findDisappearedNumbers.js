@@ -25,6 +25,7 @@ function findDisappearedNumbers_hash(nums) {
 //   [2, 7, 8, 9, 11]
 // );
 // console.log(findDisappearedNumbers_hash([4, 3, 2, 7, 8, 2, 3, 1]), [5, 6]);
+
 function findDisappearedNumbers_brute(nums) {
   //Loop [1,nums] length. For each iteration check if that value exist in nums array, if not push i to missing array
   //O(n2) time complexity O(n) space
