@@ -98,6 +98,8 @@ console.log(longestSubSeqNoDup("dvdf") == 3);
 
 const longestSubSeqNoDup_js = function (s) {
   //Super fast method using the JS methods
+  //faster than 94.44%
+  //Less space than 52.45%
   if (!s) return 0;
   var sub = "";
   var max = 0;
