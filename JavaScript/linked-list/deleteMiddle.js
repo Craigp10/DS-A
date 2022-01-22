@@ -4,24 +4,8 @@ const {
   DoublyLinkedList,
 } = require("./linkedListImplementation");
 
-function createLinkedList(values) {
-  let previousNode;
-  values.forEach((node, idx) => {
-    let newNode = new Node(node);
-    if (idx) {
-      newNode.next = previousNode;
-    }
-
-    previousNode = newNode;
-  });
-  let linkedList = new SinglyLinkedList(previousNode);
-
-  return linkedList;
-}
-
-let linkedListValues = [1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]; //length = 11; dups = 3;
-let list = createLinkedList(linkedListValues);
-console.log(list.size());
+let list = new SinglyLinkedList([1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]); //length = 11; dups = 3;
+console.log(list);
 
 function deleteMiddle(node) {
   //Given a middle node of a linkedList, remove it from the linked list.
