@@ -1,28 +1,20 @@
-const {
-  Node,
-  SinglyLinkedList,
-  DoublyLinkedList,
-} = require("./linkedListImplementation");
-
-function createLinkedList(values) {
-  let previousNode;
-  values.forEach((node, idx) => {
-    let newNode = new Node(node);
-    if (idx) {
-      newNode.next = previousNode;
-    }
-
-    previousNode = newNode;
-  });
-  let linkedList = new SinglyLinkedList(previousNode);
-
-  return linkedList;
+function ListNode(val, next) {
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
 }
 
-let linkedListValues = [1, 2, 3, 8, 6, 2];
-let list = createLinkedList(linkedListValues);
-list.print();
-console.log("***************");
+//creating LinkedList
+let values = [5, 4, 3, 2, 1];
+let previousNode;
+values.forEach((node, idx) => {
+  let newNode = new ListNode(node);
+  if (idx) {
+    newNode.next = previousNode;
+  }
+
+  previousNode = newNode;
+});
+// console.log(previousNode);
 
 function reverseLinkedList(head) {
   //Given the head of a singly linkedList, reverse it and return it. The tail is now the head and the head is now the tail
@@ -43,6 +35,5 @@ function reverseLinkedList(head) {
   return prev;
 }
 
-let head = reverseLinkedList(list.head);
-list.head = head;
-list.print();
+let head = reverseLinkedList(previousNode);
+console.log(head);
