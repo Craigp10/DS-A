@@ -1,16 +1,30 @@
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+  }
+}
 module.exports = {
-  Node: class Node {
-    constructor(data) {
-      this.data = data;
-      this.next = null;
-      this.prev = null;
-    }
-  },
-
   SinglyLinkedList: class SinglyLinkedList {
-    constructor(head = null) {
+    constructor(values, head = null) {
       this.head = head;
+      this.createList(values);
     }
+
+    createList = (values) => {
+      let previous = null;
+      values.forEach((node, idx) => {
+        let newNode = new Node(node);
+        if (idx) {
+          newNode.next = previous;
+        }
+
+        previous = newNode;
+      });
+      this.head = previous;
+      console.log(this.head);
+    };
 
     size() {
       let count = 0;
