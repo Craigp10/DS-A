@@ -36,6 +36,9 @@ const maxProductSubarray_brute = (nums) => {
 
 const maxProductSubarray = (nums) => {
   //O(n) time - O(1) space
+  //Create variables for Max and min so far
+  //create greatest max
+  //On each iteration we are going to create a temp max/min and compare that with the current max/min so far.
   if (nums.length < 2) return nums[0];
   let maxSF = nums[0];
   let minSF = nums[0];
