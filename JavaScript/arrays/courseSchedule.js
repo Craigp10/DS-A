@@ -93,6 +93,113 @@ var canFinish_brute = function (numCourses, prerequisites) {
   return true;
 };
 
+// console.log(
+//   canFinish(8, [
+//     [1, 0],
+//     [2, 6],
+//     [1, 7],
+//     [6, 4],
+//     [7, 0],
+//     [0, 5],
+//   ]) ==
+//   true
+// );
+// console.log(
+//   canFinish(3, [
+//     [1, 0],
+//     [0, 2],
+//   ]) ==
+//   true
+// );
+// console.log(
+//   canFinish(2, [
+//     [1, 0],
+//     [0, 1],
+//   ]) ==
+//   false
+// );
+// console.log(
+//   canFinish(3, [
+//     [0, 2],
+//     [1, 2],
+//     [0, 1],
+//   ]) ==
+//   true
+// );
+// console.log(
+//   canFinish(3, [
+//     [1, 0], //{0:1}
+//     [0, 2], //{0:1, 2:0}
+//     [2, 1], //{0:1, 2:0, 1: 2}
+//   ]) ==
+//   false
+// );
+// console.log(
+//   canFinish(7, [
+//     [1, 0],
+//     [0, 3],
+//     [0, 2],
+//     [3, 2],
+//     [2, 5],
+//     [4, 5],
+//     [5, 6],
+//     [2, 4],
+//   ]) ==
+//   true
+// );
+// console.log(
+//   canFinish(20, [
+//     [0, 10],
+//     [3, 18],
+//     [5, 5],
+//     [6, 11],
+//     [11, 14],
+//     [13, 1],
+//     [15, 1],
+//     [17, 4],
+//   ]) ==
+//   false
+// );
+
+const canFinish = (numCourses, prerequisites) => {
+  //graph and DFS traversal
+
+  let graph = new Array(numCourses).fill([]);
+  let visit = new Array(numCourses).fill(0);
+
+  for (let i = 0; i < prerequisites.length; i++) {
+    graph[prerequisites[i][0]] = [prerequisites[i][1]];
+  }
+
+  const dfs = (k) => {
+    if (visit[k] == -1) {
+      return false;
+    }
+
+    if (visit[k] == 1) {
+      return true;
+    }
+
+    visit[k] = -1;
+    for (let j = 0; j < graph[k].length; j++) {
+      if (!dfs(graph[k][j])) {
+        return false;
+      }
+    }
+
+    visit[k] = 1;
+
+    return true;
+  };
+
+  for (let o = 0; o < numCourses; o++) {
+    if (!dfs(o)) {
+      return false;
+    }
+  }
+  return true;
+};
+
 console.log(
   canFinish(8, [
     [1, 0],
@@ -101,38 +208,33 @@ console.log(
     [6, 4],
     [7, 0],
     [0, 5],
-  ]),
-  true
+  ]) == true
 );
 console.log(
   canFinish(3, [
     [1, 0],
     [0, 2],
-  ]),
-  true
+  ]) == true
 );
 console.log(
   canFinish(2, [
     [1, 0],
     [0, 1],
-  ]),
-  false
+  ]) == false
 );
 console.log(
   canFinish(3, [
     [0, 2],
     [1, 2],
     [0, 1],
-  ]),
-  true
+  ]) == true
 );
 console.log(
   canFinish(3, [
     [1, 0], //{0:1}
     [0, 2], //{0:1, 2:0}
     [2, 1], //{0:1, 2:0, 1: 2}
-  ]),
-  false
+  ]) == false
 );
 console.log(
   canFinish(7, [
@@ -144,8 +246,7 @@ console.log(
     [4, 5],
     [5, 6],
     [2, 4],
-  ]),
-  true
+  ]) == true
 );
 console.log(
   canFinish(20, [
@@ -157,6 +258,5 @@ console.log(
     [13, 1],
     [15, 1],
     [17, 4],
-  ]),
-  false
+  ]) == false
 );
