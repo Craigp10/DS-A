@@ -5,7 +5,15 @@ class ListNode {
   }
 }
 
+//Single Linked List - LinkedList where each node contains a value and a pointer to the next node
+//Methods
+//Create list - create linked list given array of values
+//insert - insert a node at the end of the list
+//print list - log the nodes in order
+//getFirst - get first node in first (head)
+
 class SingleLinkedList {
+  //created provided an array of values
   constructor(values, head = null) {
     this.head = new ListNode(values[0]);
     this.tail = null;

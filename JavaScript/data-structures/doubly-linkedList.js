@@ -6,7 +6,15 @@ class ListNode {
   }
 }
 
+//Double Linked List - Linked List that contains a pointer to the next node and a pointer to the previous node
+//Methods:
+//create List - given values array build list
+//insert - insert given value at end of list
+//prepend - insert given value at head of list -- replacing the head
+//print List - print all of the values in the list in order
+
 class DoublyLinkedList {
+  //created provided an array of values
   constructor(values, head = null) {
     this.head = new ListNode(values[0]);
     this.tail = this.head;
@@ -68,6 +76,21 @@ class DoublyLinkedList {
     return;
   }
 
+  getNth(index) {
+    let current = this.head;
+    let count = 0;
+
+    //index of Node we are currently looking at
+
+    while (current != null) {
+      if (count == index) return current.data;
+      count++;
+      current = current.next;
+    }
+
+    return 0;
+  }
+
   printList() {
     let node = this.head;
     while (node) {
@@ -76,9 +99,13 @@ class DoublyLinkedList {
     }
     return;
   }
+  deleteList() {
+    //explain it? Since no values are being referenced anymore they are removed via garbage collection?
+    head = null;
+  }
 }
 
 let newList = new DoublyLinkedList([1, 2, 3, 4]);
-// newList.printList();
+newList.printList();
 newList.insertAt(1, 10);
 newList.printList();
