@@ -1,11 +1,6 @@
-const {
-  Node,
-  SinglyLinkedList,
-  DoublyLinkedList,
-} = require("./linkedListImplementation");
+const { SinglyLinkedList } = require("../data-structures/singly-linkedList");
 
 let list = new SinglyLinkedList([1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]); //length = 11; dups = 3;
-console.log(list);
 
 function deleteMiddle(node) {
   //Given a middle node of a linkedList, remove it from the linked list.
@@ -26,4 +21,4 @@ console.log(
     next: { data: 4, next: { data: 3, next: {} } },
   })
 );
-console.log(list.size());
+// console.log(list.printList());

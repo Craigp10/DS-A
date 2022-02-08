@@ -1,3 +1,4 @@
+const { CycleLinkedList } = require("../data-structures/cycle-linkedList");
 /**
  * Definition for singly-linked list.
  * Given head, the head of a linked list, determine if the linked list has a cycle in it.
@@ -54,3 +55,9 @@ const hasCycle = (head) => {
   }
   return false;
 };
+
+let list1 = new CycleLinkedList([1, 2, 3, 4, 5]); //1 -> 2 -> 3 -> 4 -> 5 -> 1
+console.log(hasCycle(list1.head), false);
+let list2 = new CycleLinkedList([1, 2, 3, 4, 5]); //1 -> 2 -> 3 -> 4 -> 5 -> 1
+list2.insert(6); //inserting creates the cycle with our class
+console.log(hasCycle(list2.head), true);
