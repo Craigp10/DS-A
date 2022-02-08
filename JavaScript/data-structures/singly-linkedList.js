@@ -12,7 +12,7 @@ class ListNode {
 //print list - log the nodes in order
 //getFirst - get first node in first (head)
 
-class SingleLinkedList {
+class SinglyLinkedList {
   //created provided an array of values
   constructor(values, head = null) {
     this.head = new ListNode(values[0]);
@@ -31,6 +31,7 @@ class SingleLinkedList {
       node.next = new ListNode(values[i]);
       node = node.next;
     }
+    this.tail = node;
   }
 
   insert(value) {
@@ -50,12 +51,12 @@ class SingleLinkedList {
   }
 }
 
-let newList = new SingleLinkedList([1, 2, 3, 4, 5, 6]);
-console.log(newList.getFirst());
-newList.printList();
+// let newList = new SinglyLinkedList([1, 2, 3, 4, 5, 6]);
+// console.log(newList.getFirst());
+// newList.printList();
 
 module.exports = {
-  SingleLinkedList,
+  SinglyLinkedList,
   ListNode,
 };
 
