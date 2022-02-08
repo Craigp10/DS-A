@@ -1,32 +1,12 @@
-const {
-  Node,
-  SinglyLinkedList,
-  DoublyLinkedList,
-} = require("./linkedListImplementation");
+const { SinglyLinkedList } = require("../data-structures/singly-linkedList");
 
-function createLinkedList(values) {
-  let previousNode;
-  values.forEach((node, idx) => {
-    let newNode = new Node(node);
-    if (idx) {
-      newNode.next = previousNode;
-    }
-
-    previousNode = newNode;
-  });
-  let linkedList = new SinglyLinkedList(previousNode);
-
-  return linkedList;
-}
-let linkedListValues = [1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]; //length = 11; dups = 3;
-let list = createLinkedList(linkedListValues);
+let list = new SinglyLinkedList([1, 2, 3, 4, 5, 3, 5, 7, 8, 6, 2]); //length = 11; ktoLast = 8
 
 function kToLastLinear(list, k) {
   //return the kth to last data
   //assume we don't know the size
 
   let size = list.size();
-
   let head = list.getFirst();
 
   let stopIndex = size - k;
@@ -68,5 +48,5 @@ function kToLastPointers(head, k) {
 }
 let head = list.head;
 
-console.log(kToLastLinear(list, 3).data === 3);
-console.log(kToLastPointers(head, 3).data === 3);
+console.log(kToLastLinear(list, 3).val, 8);
+console.log(kToLastPointers(head, 3).val, 8);

@@ -38,6 +38,16 @@ class SinglyLinkedList {
     this.tail.next = new ListNode(value, null);
   }
 
+  size() {
+    let count = 0;
+    let node = this.head;
+    while (node) {
+      count++;
+      node = node.next;
+    }
+    return count;
+  }
+
   printList() {
     let node = this.head;
     while (node) {
@@ -49,11 +59,25 @@ class SinglyLinkedList {
   getFirst() {
     return this.head;
   }
+
+  reverse() {
+    let node = this.head;
+    let prev = null;
+    while (node) {
+      let next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    this.head = prev;
+  }
 }
 
-// let newList = new SinglyLinkedList([1, 2, 3, 4, 5, 6]);
-// console.log(newList.getFirst());
-// newList.printList();
+let newList = new SinglyLinkedList([1, 2, 3, 4, 5, 6]);
+console.log(newList.getFirst());
+newList.printList();
+newList.reverse();
+newList.printList();
 
 module.exports = {
   SinglyLinkedList,
