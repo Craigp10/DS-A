@@ -1,27 +1,8 @@
-const {
-  Node,
-  SinglyLinkedList,
-  DoublyLinkedList,
-} = require("./linkedListImplementation");
-
-function createLinkedList(values) {
-  let previousNode;
-  values.forEach((node, idx) => {
-    let newNode = new Node(node);
-    if (idx) {
-      newNode.next = previousNode;
-    }
-
-    previousNode = newNode;
-  });
-  let linkedList = new SinglyLinkedList(previousNode);
-
-  return linkedList;
-}
+const { SinglyLinkedList } = require("../data-structures/singly-linkedList");
 
 let linkedListValues = [1, 2, 3, 8, 6, 2];
-let list = createLinkedList(linkedListValues);
-list.print();
+let list = new SinglyLinkedList(linkedListValues);
+list.printList();
 
 function removeDupsHash(head) {
   //Remove duplicates from an unsorted linkedList.
@@ -58,20 +39,26 @@ function removeDupsRunner(head) {
   // Time Complexity - O(n2)
   // Space Complexity - O(1) not considering existing linkedList.
 
-  let currentNode = head;
-  while (currentNode) {
-    let runnerNode = currentNode;
-    while (runnerNode.next) {
-      if (runnerNode.next.data == currentNode.data) {
-        runnerNode.next = runnerNode.next.next;
+  let ptr1 = head;
+  while (ptr1 && ptr1.next) {
+    let ptr2 = ptr1;
+    while (ptr2 && ptr2.next) {
+      if (ptr2.next.val == ptr1.val) {
+        //remove dup;
+        ptr2.next = ptr2.next.next;
       }
-      runnerNode = runnerNode.next;
+      ptr2 = ptr2.next;
     }
-    currentNode = currentNode.next;
+    ptr1 = ptr1.next;
   }
 }
 console.log("**** REMOVING DUPS ****");
-console.log("List order after dups removed", [2, 6, 8, 7, 5, 3, 4, 1]);
+console.log("List order after dups removed", [1, 2, 3, 8, 6, 2]);
 // removeDupsHash(list.head);
 removeDupsRunner(list.head);
-list.print();
+list.printList();
+console.log("********************************\n");
+let list2 = new SinglyLinkedList([2, 4, 6, 3, 2, 4, 5, 7, 3, 1, 9]);
+removeDupsRunner(list2.head);
+list2.printList();
+console.log("List order after dups removed", [2, 4, 6, 3, 5, 7, 1, 9]);

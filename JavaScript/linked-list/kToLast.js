@@ -37,7 +37,7 @@ function kToLastPointers(head, k) {
   for (let j = 0; j < k; j++) {
     ptr2 = ptr2.next;
   }
-  console.log({ ptr1, ptr2 });
+  // console.log({ ptr1, ptr2 });
 
   while (ptr2) {
     ptr2 = ptr2.next;

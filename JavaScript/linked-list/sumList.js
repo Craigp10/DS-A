@@ -1,32 +1,14 @@
-const {
-  Node,
-  SinglyLinkedList,
-  DoublyLinkedList,
-} = require("./linkedListImplementation");
+const { SinglyLinkedList } = require("../data-structures/singly-linkedList");
 
-function createLinkedList(values) {
-  let previousNode;
-  values.split("").forEach((node, idx) => {
-    let newNode = new Node(node);
-    if (idx) {
-      newNode.next = previousNode;
-    }
+let firstDigit = [7, 1, 6];
+let secondDigit = [5, 9, 2];
+let list1 = new SinglyLinkedList(firstDigit);
+let list2 = new SinglyLinkedList(secondDigit);
 
-    previousNode = newNode;
-  });
-  let linkedList = new SinglyLinkedList(previousNode);
+list1.printList();
+list2.printList();
 
-  return linkedList;
-}
-
-let firstDigit = "716";
-let list1 = createLinkedList(firstDigit);
-let secondDigit = "592";
-let list2 = createLinkedList(secondDigit);
-list1.print();
-list2.print();
-
-function sumList(list1, list2) {
+function sumList(node1, node2) {
   //Given two linkedList that are in reverse order, add its digits together as a string and sum the two strings
   //ex. (7 -> 1 -> 6) + (5 -> 9 -> 2) ... 617 + 295 = 912.
   //Assume the digits are the same length
@@ -37,18 +19,14 @@ function sumList(list1, list2) {
   let digit1 = "";
   let digit2 = "";
 
-  let nextNode1 = list1.head;
-  let nextNode2 = list2.head;
+  while (node1 && node2) {
+    digit1 += node1.val.toString();
+    digit2 += node2.val.toString();
 
-  while (nextNode1 && nextNode2) {
-    digit1 += nextNode1.data.toString();
-    digit2 += nextNode2.data.toString();
-
-    nextNode1 = nextNode1.next;
-    nextNode2 = nextNode2.next;
+    node1 = node1.next;
+    node2 = node2.next;
   }
-  console.log(digit1, digit2);
   return parseInt(digit1) + parseInt(digit2);
 }
 
-console.log(sumList(list1, list2));
+console.log(sumList(list1.head, list2.head), 1308);
