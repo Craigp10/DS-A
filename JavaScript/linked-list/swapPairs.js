@@ -14,6 +14,8 @@ function ListNode(val, next) {
 }
 
 const swapPairs = function (head) {
+  //O(n/2) - We can skip through half of the nodes in n.
+
   //If head or head next is null return head -- can't do any swaps
   if (!head || !head.next) return head;
   //if head and head next ar valid but but head.next.next then swap
@@ -32,22 +34,22 @@ const swapPairs = function (head) {
   previous.next = head.next.next;
   newHead.next = previous;
   let current = previous.next;
-  // console.log(previous,current,current.next)
-  while (current.next) {
-    // console.log(previous,current,current.next)
-    // console.l0
-    //otherwise we need to iterate through and udpate
-    //start with current on 3rd spot (index 2), previous = current - 1
-    //if (current.next exist) swap previous.next = current.next, current.next w/ current.
-    //previous = current.next, current = current.next.next;
+  while (current && current.next) {
+    //iterate while current && current.next exist, if current.next doesn't exist then we've concluded our swaps
+    //current represents the first position of the node swap and previous represents the last position of the previous node swap
+
+    //assign tmp to current.next.next -- This is will be our current position for the next iteration.
     let tmp = current.next.next;
-    let next = current.next;
-    previous.next = next;
+    //Start the node swap -- set previous node to the current.next node
+    previous.next = current.next;
+    //assign current.next to our new starter node
     current.next = tmp;
+    //finish swap by assigning previous.next next to the current node
     previous.next.next = current;
+    //prepare for next iteration -- assign  previous to the current place
     previous = current;
+    //current to our starting position for next iteration.
     current = tmp;
-    if (!current) return newHead;
   }
   return newHead;
 };
@@ -66,6 +68,13 @@ while (node) {
 let list2 = new SinglyLinkedList([1, 2, 4]);
 node = swapPairs(list2.head);
 console.log("SHOULD BE: 2 -> 1 -> 4");
+while (node) {
+  console.log(node.val);
+  node = node.next;
+}
+let list3 = new SinglyLinkedList([1, 2, 3, 4]);
+node = swapPairs(list3.head);
+console.log("SHOULD BE: 2 -> 1 -> 4 -> 3");
 while (node) {
   console.log(node.val);
   node = node.next;
