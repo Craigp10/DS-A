@@ -1,4 +1,4 @@
-const Stack = require("./stackImplementation");
+const { Stack } = require("../data-structures/stack");
 
 class MinStack {
   //Dynamic Stack that displays min

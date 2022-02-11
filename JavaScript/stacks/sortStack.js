@@ -1,4 +1,4 @@
-const Stack = require("./stackImplementation");
+const { Stack } = require("../data-structures/stack");
 
 function sortStack(stack) {
   let orderStack = new Stack();
