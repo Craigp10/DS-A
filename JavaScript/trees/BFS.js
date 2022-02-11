@@ -1,4 +1,4 @@
-const { tree } = require("./BStree_implementation");
+const { tree } = require("../data-structures/binarySearchTree");
 //          10
 //       6      15
 //     3   8     20
@@ -40,4 +40,7 @@ function BFS(root) {
 //
 
 //visited: [11,7,15,1,9,12,34,10,13,30,120,14,18,35,324]
-console.log(BFS(tree.root));
+console.log(
+  BFS(tree.root),
+  [11, 7, 15, 1, 9, 12, 34, 10, 13, 30, 120, 14, 18, 35, 324]
+);

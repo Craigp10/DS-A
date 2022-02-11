@@ -1,4 +1,4 @@
-const { tree } = require("./BStree_implementation");
+const { tree } = require("../data-structures/binarySearchTree");
 
 //My Tree
 //          11
