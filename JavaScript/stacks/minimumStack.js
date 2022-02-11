@@ -2,21 +2,27 @@ const { Stack } = require("../data-structures/stack");
 
 class MinStack {
   //Dynamic Stack that displays min
+  //items is our regular stack
+  //minStack contains the min values as a stack.
+  //When we run operations push/pop we just how the new/removing value relates to our min stack
+
   constructor() {
     this.items = new Stack(); //All items
-    this.s2 = new Stack(); //minStack
+    this.minStack = new Stack(); //minStack
   }
 
   pop() {
+    //compare popped value to current min (top of min stack) -- If they are the same pop it.
     let popped = this.items.pop();
     if (popped == this.min()) {
-      this.s2.pop();
+      this.minStack.pop();
     }
     return popped;
   }
   push(item) {
-    if (this.s2.isEmpty() || item < this.s2.peek()) {
-      this.s2.push(item);
+    //compare new item to minstack top -- If it is lower push it onto the stack
+    if (this.minStack.isEmpty() || item < this.minStack.peek()) {
+      this.minStack.push(item);
     }
     this.items.push(item);
   }
@@ -30,11 +36,11 @@ class MinStack {
   }
 
   min() {
-    console.log("c", this.s2);
-    if (this.s2.isEmpty()) {
+    //Return top of min stack
+    if (this.minStack.isEmpty()) {
       throw "Empty Min Stack";
     } else {
-      return this.s2.peek();
+      return this.minStack.peek();
     }
   }
 }
