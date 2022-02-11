@@ -9,16 +9,17 @@ class TreeNode {
 // Binary Tree
 //Methods
 //Create - empty tree
-//Insert - Insert a node
-//Delete - delete a node
-//Search - Find a node in the tree
+//Insert - Insert a node O(n) - worst case - O(log n) best case
+//Delete - delete a node - O(n) worst - O(log n) best
+//Search - Find a node in the tree - O(n) worst - O(log n) best
+//print - O(n)
 
 class BinaryTree {
   constructor() {
     this.root = null;
   }
 
-  add(value) {
+  insert(value) {
     console.log(value, this.root);
     let node = new TreeNode(value);
     if (!this.root) {

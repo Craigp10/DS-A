@@ -8,6 +8,11 @@ class Node {
 }
 
 // BinarySearchTree:
+//Operations
+//insert - O(log n) - Worst O(n)
+//find - O(log n) - Worst O(n)
+//remove - O(log n) - Worst O(n)
+
 class BinarySearchTree {
   constructor() {
     this.root = null;
@@ -51,7 +56,6 @@ class BinarySearchTree {
         current = current.right;
       }
     }
-
     return false;
   }
 
