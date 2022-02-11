@@ -159,4 +159,5 @@ tree.insert(35);
 module.exports = {
   tree,
   BinarySearchTree,
+  Node,
 };
