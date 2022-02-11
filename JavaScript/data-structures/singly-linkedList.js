@@ -15,27 +15,25 @@ class ListNode {
 class SinglyLinkedList {
   //created provided an array of values
   constructor(values, head = null) {
-    this.head = new ListNode(values[0]);
+    this.head = null;
     this.tail = null;
-    this.createList(values);
+    if (values.length) {
+      this.createList(values);
+    }
   }
 
   createList(values) {
-    let node = this.head;
+    // let node = this.head;
+    this.head = new ListNode(values[0], null);
+    this.tail = this.head;
     for (let i = 1; i < values.length; i++) {
-      if (i == values.length - 1) {
-        node.next = new ListNode(values[i], null);
-        continue;
-      }
-
-      node.next = new ListNode(values[i]);
-      node = node.next;
+      this.insert(values[i]);
     }
-    this.tail = node;
   }
 
   insert(value) {
     this.tail.next = new ListNode(value, null);
+    this.tail = this.tail.next;
   }
 
   size() {
@@ -74,10 +72,10 @@ class SinglyLinkedList {
 }
 
 let newList = new SinglyLinkedList([1, 2, 3, 4, 5, 6]);
-console.log(newList.getFirst());
-newList.printList();
-newList.reverse();
-newList.printList();
+// console.log(newList.getFirst());
+// newList.printList();
+// newList.reverse();
+// newList.printList();
 
 module.exports = {
   SinglyLinkedList,
