@@ -1,6 +1,9 @@
 // import collections
 const countTriangles = (n, edges) => {
   //Create key value pair obj that will store connected nodes
+
+  if (n < 3 || edges < 2) return 0;
+
   d = new Object(new Array());
 
   //iterate our edges store the connections in our store
@@ -60,4 +63,20 @@ console.log(
     [3, 4],
   ]),
   4
+);
+console.log(countTriangles(2, [[1, 2]]), 0);
+console.log(
+  countTriangles(3, [
+    [1, 2],
+    [1, 3],
+  ]),
+  0
+);
+console.log(
+  countTriangles(3, [
+    [1, 2],
+    [1, 3],
+    [2, 3],
+  ]),
+  1
 );
