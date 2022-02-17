@@ -26,6 +26,7 @@ class BinarySearchTree {
     let nextNode = this.root;
     while (nextNode) {
       if (value == nextNode.value) {
+        //Don't do anything if node is same value
         return this;
       } else if (value < nextNode.value) {
         if (!nextNode.left) {
@@ -116,8 +117,9 @@ tree.insert(13);
 tree.insert(14);
 tree.insert(30);
 tree.insert(18);
+tree.insert(18);
 tree.insert(35);
-
+// DFS_preOrder(tree.root);
 // let dupTree = new BinarySearchTree();
 // dupTree.root = new Node(11);
 // dupTree.root.right = new Node(15); // >11

@@ -125,7 +125,6 @@ class MinHeap {
       // Recursively heapify the affected sub-tree
       this.minHeapify(arr, n, smallest);
     }
-    // this.heap = arr;
   };
 
   size() {
