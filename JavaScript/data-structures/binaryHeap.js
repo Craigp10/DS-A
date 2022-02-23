@@ -20,7 +20,11 @@ class MinHeap {
 
   push(val) {
     //push value to end of heap
-    this.heap.push(new HeapNode(val, val));
+    if (val instanceof HeapNode) {
+      this.heap.push(val);
+    } else {
+      this.heap.push(new HeapNode(val, val));
+    }
     this.bubble_up(0, this.heap.length - 1);
   }
 
@@ -132,7 +136,7 @@ class MinHeap {
   }
 
   peek() {
-    return this.heap[0];
+    return this.heap[0].val;
   }
 
   getRoot() {
@@ -143,7 +147,7 @@ class MinHeap {
   }
 }
 
-let minHeap = new MinHeap();
+// let minHeap = new MinHeap();
 // minHeap.heapSort([5, 23, 22, 13, 4, 56, 27, 43, 2, 3, 36]); // [1,2,4,5,14,22,23,27,36,43,56]
 // minHeap.print();
 // console.log(minHeap.peek()); //2
@@ -168,11 +172,11 @@ class MaxHeap {
 
   push(val) {
     //push value to end of heap
-    if (!val) {
-      console.log("invalid push value");
-      return;
+    if (val instanceof HeapNode) {
+      this.heap.push(val);
+    } else {
+      this.heap.push(new HeapNode(val, val));
     }
-    this.heap.push(new HeapNode(val, val));
     // this.heap.push(new HeapNode(val * -1, val * -1));
     this.bubble_up(0, this.heap.length - 1);
   }
@@ -297,7 +301,7 @@ class MaxHeap {
   }
 }
 
-let maxHeap = new MaxHeap();
+// let maxHeap = new MaxHeap();
 // maxHeap.print();
 // maxHeap.heapSort([5, 23, 22, 13, 4, 56, 27, 43, 2, 1, 36]); //[56, 43, 36, 27,23,22,13,5,4,2,1]
 // maxHeap.push(46);
